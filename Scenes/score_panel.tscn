@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://ndvgxtijmatp"]
+
+[ext_resource type="Script" path="res://Scripts/ScorePanel.gd" id="1_mow6m"]
+[ext_resource type="Texture2D" uid="uid://dl0v387c78rx8" path="res://Assets/1722070978421.jpg" id="2_hd5wd"]
+
+[sub_resource type="FontVariation" id="FontVariation_phk4e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n3p0c"]
+font = SubResource("FontVariation_phk4e")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_8hhqp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8qhqa"]
+font = SubResource("FontVariation_8hhqp")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[node name="ScorePanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mow6m")
+
+[node name="Desing" type="Sprite2D" parent="."]
+position = Vector2(379, 89)
+scale = Vector2(0.150833, 0.133447)
+texture = ExtResource("2_hd5wd")
+
+[node name="PlayerPTS" type="Label" parent="."]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 67.0
+offset_right = 332.0
+offset_bottom = 109.0
+text = "0"
+label_settings = SubResource("LabelSettings_n3p0c")
+horizontal_alignment = 1
+
+[node name="EnemyPTS" type="Label" parent="."]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 67.0
+offset_right = 431.0
+offset_bottom = 109.0
+text = "0"
+label_settings = SubResource("LabelSettings_8qhqa")
+horizontal_alignment = 1

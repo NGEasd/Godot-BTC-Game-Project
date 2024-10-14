@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbk6s1xkcuu31"]
+
+[ext_resource type="Script" path="res://ArenaSelectMenu.gd" id="1_5cu5d"]
+[ext_resource type="Texture2D" uid="uid://br3tvtgmdxy80" path="res://Assets/arena_select_menu.jpg" id="2_2h7ba"]
+[ext_resource type="PackedScene" uid="uid://d0if6xsux6bv4" path="res://button_pressed_audio.tscn" id="3_8eacn"]
+[ext_resource type="AudioStream" uid="uid://c5a0yv5kmul22" path="res://Audio/NumberSound.mp3" id="3_j88s3"]
+[ext_resource type="Texture2D" uid="uid://bx7jk12mn1e1q" path="res://Assets/BackButton.jpg" id="4_ng886"]
+
+[node name="ArenaSelectMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5cu5d")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1206.5, 538.25)
+scale = Vector2(1.00792, 1.00787)
+texture = ExtResource("2_2h7ba")
+
+[node name="BasicArenaButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 347.0
+offset_top = 355.0
+offset_right = 780.0
+offset_bottom = 790.0
+
+[node name="SkatingParkButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1660.0
+offset_top = 371.0
+offset_right = 2093.0
+offset_bottom = 806.0
+
+[node name="ColiseumButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1022.0
+offset_top = 361.0
+offset_right = 1405.0
+offset_bottom = 795.0
+
+[node name="ButtonPressedAudio" parent="." instance=ExtResource("3_8eacn")]
+position = Vector2(410.665, 196.118)
+scale = Vector2(0.138268, 0.115607)
+pitch_scale = 1.09
+
+[node name="Beep" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_j88s3")
+volume_db = 11.763
+pitch_scale = 4.0
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 81.0
+offset_right = 410.0
+offset_bottom = 203.0
+
+[node name="Sprite2D" type="Sprite2D" parent="BackButton"]
+position = Vector2(152, 61)
+scale = Vector2(0.119583, 0.103873)
+texture = ExtResource("4_ng886")
+
+[connection signal="pressed" from="BasicArenaButton" to="." method="_on_basic_arena_button_pressed"]
+[connection signal="pressed" from="SkatingParkButton" to="." method="_on_skating_park_button_pressed"]
+[connection signal="pressed" from="ColiseumButton" to="." method="_on_coliseum_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

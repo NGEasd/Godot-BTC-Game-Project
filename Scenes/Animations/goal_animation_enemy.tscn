@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsxgrd0yd6xwc"]
+
+[ext_resource type="Script" path="res://GoalAnimation.gd" id="1_cq15t"]
+[ext_resource type="FontFile" uid="uid://cug67l2gwtw6a" path="res://Assets/LuckiestGuy-Regular.ttf" id="2_wqhaq"]
+[ext_resource type="AudioStream" uid="uid://bveixa13tlemx" path="res://Audio/GOALLL.mp3" id="3_1m1qp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_owscs"]
+font = ExtResource("2_wqhaq")
+font_size = 300
+font_color = Color(0.929412, 0.478431, 0.478431, 1)
+outline_size = 150
+outline_color = Color(0.21, 0.21, 0.21, 1)
+
+[sub_resource type="Animation" id="Animation_jd23i"]
+resource_name = "goal_animation"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.1, 0.9, 1.7, 2.3, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kkf0o"]
+_data = {
+"goal_animation": SubResource("Animation_jd23i")
+}
+
+[node name="GoalAnimation" type="Node2D"]
+z_index = 2
+script = ExtResource("1_cq15t")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1868.0
+offset_top = 671.0
+offset_right = 3167.0
+offset_bottom = 972.0
+rotation = 3.14159
+text = "GOOALL!"
+label_settings = SubResource("LabelSettings_owscs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kkf0o")
+}
+
+[node name="goal" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_1m1qp")
+volume_db = 4.16

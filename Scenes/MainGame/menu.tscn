@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://bych8cdfybeqa"]
+
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_yeet2"]
+[ext_resource type="PackedScene" uid="uid://d0if6xsux6bv4" path="res://button_pressed_audio.tscn" id="2_2ob88"]
+[ext_resource type="Texture2D" uid="uid://bnk4vny35hpqn" path="res://Assets/1722885560428.jpg" id="3_gs8ct"]
+[ext_resource type="Texture2D" uid="uid://d0rwh3j36qcgk" path="res://Assets/1722885604498.jpg" id="4_h26t3"]
+[ext_resource type="Texture2D" uid="uid://cep15uwwfg6ai" path="res://Assets/1722885669976.jpg" id="5_bt4cd"]
+[ext_resource type="Texture2D" uid="uid://c15ununit6rlj" path="res://Assets/1726157983136.jpg" id="6_piegb"]
+[ext_resource type="FontFile" uid="uid://cug67l2gwtw6a" path="res://Assets/LuckiestGuy-Regular.ttf" id="7_038v7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ljf56"]
+font = ExtResource("7_038v7")
+font_size = 55
+outline_size = 25
+outline_color = Color(0.08, 0.08, 0.08, 1)
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_yeet2")
+
+[node name="ButtonPressedAudio" parent="." instance=ExtResource("2_2ob88")]
+position = Vector2(1285, 521)
+scale = Vector2(1.15625, 1.11296)
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1272, 515)
+scale = Vector2(1.15625, 1.11296)
+texture = ExtResource("3_gs8ct")
+
+[node name="OptionQuit" type="Control" parent="Background"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Background/OptionQuit"]
+layout_mode = 0
+offset_left = -860.541
+offset_top = 155.441
+offset_right = -299.541
+offset_bottom = 364.441
+text = "PLAY (NOT WORKING!!)"
+
+[node name="QuitPhotoButton" type="Sprite2D" parent="Background/OptionQuit"]
+position = Vector2(-582.054, 263.262)
+scale = Vector2(0.164372, 0.133396)
+texture = ExtResource("4_h26t3")
+
+[node name="Option1v1" type="Control" parent="Background"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="1v1" type="Button" parent="Background/Option1v1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.009
+anchor_top = 0.642
+anchor_right = 0.009
+anchor_bottom = 0.642
+offset_left = -861.36
+offset_top = -113.68
+offset_right = -299.36
+offset_bottom = 103.32
+text = "1v1
+"
+
+[node name="1v1ButtonPhoto" type="Sprite2D" parent="Background/Option1v1"]
+position = Vector2(-581.125, 19.7671)
+scale = Vector2(0.164675, 0.138308)
+texture = ExtResource("5_bt4cd")
+
+[node name="OptionAdventure" type="Control" parent="Background"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 0.864865
+offset_top = 2.69551
+offset_right = 40.8649
+offset_bottom = 42.6955
+
+[node name="Adventure" type="Button" parent="Background/OptionAdventure"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.009
+anchor_top = 0.642
+anchor_right = 0.009
+anchor_bottom = 0.642
+offset_left = -861.765
+offset_top = -364.416
+offset_right = -300.765
+offset_bottom = -147.416
+text = "1v1
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/OptionAdventure"]
+position = Vector2(-580.324, -230.916)
+scale = Vector2(0.221507, 0.25506)
+texture = ExtResource("6_piegb")
+
+[node name="Label" type="Label" parent="Background/OptionAdventure"]
+layout_mode = 0
+offset_left = -806.054
+offset_top = -249.784
+offset_right = -359.054
+offset_bottom = -193.784
+text = "Adventure Mode"
+label_settings = SubResource("LabelSettings_ljf56")
+
+[connection signal="pressed" from="Background/OptionQuit/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Background/Option1v1/1v1" to="." method="_on_v_1_pressed"]
+[connection signal="pressed" from="Background/OptionAdventure/Adventure" to="." method="_on_v_1_pressed"]
+[connection signal="pressed" from="Background/OptionAdventure/Adventure" to="." method="_on_adventure_pressed"]

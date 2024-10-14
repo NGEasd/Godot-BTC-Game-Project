@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://cntypyj3tblpr"]
+
+[ext_resource type="Script" path="res://Tutorial.gd" id="1_bqdf2"]
+[ext_resource type="Texture2D" uid="uid://bubddupsnrj4c" path="res://Assets/1724103399012.png" id="2_ulwuq"]
+[ext_resource type="FontFile" uid="uid://cug67l2gwtw6a" path="res://Assets/LuckiestGuy-Regular.ttf" id="3_uh1lu"]
+[ext_resource type="AudioStream" uid="uid://c5a0yv5kmul22" path="res://Audio/NumberSound.mp3" id="4_bitck"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7st3m"]
+line_spacing = 17.0
+font = ExtResource("3_uh1lu")
+font_size = 34
+outline_size = 36
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Tutorial" type="Node2D"]
+z_index = 3
+script = ExtResource("1_bqdf2")
+json_file_path = "res://Tutorial Texts/level1.json"
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -202.0
+offset_top = -293.0
+offset_right = 3128.0
+offset_bottom = 1456.0
+
+[node name="Speaker" type="Sprite2D" parent="."]
+position = Vector2(1429.5, 542)
+scale = Vector2(0.399249, 0.306347)
+texture = ExtResource("2_ulwuq")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1086.0
+offset_top = 308.0
+offset_right = 1962.0
+offset_bottom = 584.0
+text = "Welcome to the BTC GAME!"
+label_settings = SubResource("LabelSettings_7st3m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Beep" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_bitck")
+volume_db = 19.591
+pitch_scale = 4.0
+
+[node name="TapToContinue" type="Label" parent="."]
+offset_left = 1423.0
+offset_top = 689.0
+offset_right = 2397.0
+offset_bottom = 1029.0
+text = "Tap TO CONTINUE"
+label_settings = SubResource("LabelSettings_7st3m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="TapToContinue"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 179.0
+offset_top = 90.0
+offset_right = 792.0
+offset_bottom = 235.0
+
+[connection signal="pressed" from="TapToContinue/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://ghp4cv3io3hx"]
+
+[ext_resource type="Script" path="res://Scenes/Discs_Players/player_two.gd" id="1_ojw8c"]
+[ext_resource type="Texture2D" uid="uid://bvusfytqvmw47" path="res://Assets/Másik Korong.png" id="2_mvapm"]
+[ext_resource type="Script" path="res://Scenes/Discs_Players/PlayerDisc1v1.gd" id="2_oxcbv"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_r53eb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1qq13"]
+radius = 58.0775
+
+[node name="PlayerTwo" type="Node2D"]
+script = ExtResource("1_ojw8c")
+
+[node name="PlayerDisc" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 7
+gravity_scale = 0.0
+max_contacts_reported = 10
+contact_monitor = true
+script = ExtResource("2_oxcbv")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerDisc"]
+position = Vector2(875, 489)
+scale = Vector2(0.248, 0.348)
+texture = ExtResource("2_mvapm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDisc"]
+position = Vector2(877, 464)
+shape = SubResource("CircleShape2D_1qq13")
+
+[node name="PlayerController" type="Control" parent="PlayerDisc"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Test" type="Node2D" parent="PlayerDisc/PlayerController"]
+position = Vector2(-5, 16)
+
+[node name="UI" type="CanvasLayer" parent="PlayerDisc/PlayerController/Test"]
+
+[node name="VirtualJoystick" parent="PlayerDisc/PlayerController/Test/UI" instance=ExtResource("3_r53eb")]
+offset_left = 2041.0
+offset_top = -1034.0
+offset_right = 2341.0
+offset_bottom = -734.0
+
+[connection signal="body_entered" from="PlayerDisc" to="PlayerDisc" method="_on_body_entered"]

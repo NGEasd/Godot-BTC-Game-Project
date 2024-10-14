@@ -1,0 +1,109 @@
+[gd_scene load_steps=17 format=3 uid="uid://c26cagpw2eds4"]
+
+[ext_resource type="PackedScene" uid="uid://cv4diekh2nbcv" path="res://AdventureMode/Levels/Founds/challenging_arena_without_obstacle.tscn" id="1_0khcv"]
+[ext_resource type="PackedScene" uid="uid://bvxvupynyo5tg" path="res://Scenes/Football Goals/enemy_goal_zone.tscn" id="2_t03u3"]
+[ext_resource type="PackedScene" uid="uid://n8gop7h1ii3n" path="res://Scenes/Football Goals/my_goal_zone.tscn" id="3_jc50t"]
+[ext_resource type="PackedScene" uid="uid://d38le36cl8cw4" path="res://Scenes/Score Panels/timer_presenter_1.tscn" id="4_p5mp2"]
+[ext_resource type="PackedScene" uid="uid://b88c8tybxsxgf" path="res://Scenes/Score Panels/result_table_1.tscn" id="5_iryac"]
+[ext_resource type="PackedScene" uid="uid://c5gthnnlb4mkp" path="res://Scenes/Managers/match_time_manager.tscn" id="6_yenea"]
+[ext_resource type="PackedScene" uid="uid://dhhpevr07f2sg" path="res://Scenes/Balls/ball_simple.tscn" id="7_hsxmn"]
+[ext_resource type="PackedScene" uid="uid://d1nwtr7swnjhf" path="res://Scenes/Discs_Enemy/enemy_disc_updated.tscn" id="8_8qc28"]
+[ext_resource type="PackedScene" uid="uid://bqj24wsxm32uc" path="res://Scenes/Managers/original_game_manager.tscn" id="9_b8iwu"]
+[ext_resource type="Script" path="res://Scenes/Managers/original_game_manager.gd" id="10_1oamb"]
+[ext_resource type="PackedScene" uid="uid://dypkrl1b5qfmq" path="res://Scenes/Animations/goal_animation.tscn" id="11_w5iyc"]
+[ext_resource type="PackedScene" uid="uid://dsxgrd0yd6xwc" path="res://Scenes/Animations/goal_animation_enemy.tscn" id="12_iigqf"]
+[ext_resource type="PackedScene" uid="uid://bfdoc8lb4bnnh" path="res://Scenes/match_ended.tscn" id="13_2g0qo"]
+[ext_resource type="Script" path="res://Scenes/Levels/BasicLevels/match_ended.gd" id="14_jbtmd"]
+[ext_resource type="AudioStream" uid="uid://cbmhtx2dabt0a" path="res://Audio/KickOff.mp3" id="15_h1uca"]
+[ext_resource type="AudioStream" uid="uid://w6xa3angrj1m" path="res://Audio/MatchEnded.mp3" id="16_ai4nb"]
+
+[node name="BasicChallengingArenaWithoutObstacle" type="Node2D"]
+
+[node name="ChallengingArenaWithoutObstacle" parent="." instance=ExtResource("1_0khcv")]
+
+[node name="EnemyGoalZone" parent="." instance=ExtResource("2_t03u3")]
+position = Vector2(639, -468)
+
+[node name="MyGoalZone" parent="." instance=ExtResource("3_jc50t")]
+position = Vector2(1226, 1070)
+
+[node name="TimerPresenter1" parent="." instance=ExtResource("4_p5mp2")]
+offset_left = 1880.0
+offset_top = 473.0
+offset_right = 1995.0
+offset_bottom = 534.0
+text = "00 : 00"
+
+[node name="TimerPresenter2" parent="." instance=ExtResource("4_p5mp2")]
+offset_left = 577.0
+offset_top = 621.0
+offset_right = 769.0
+offset_bottom = 682.0
+rotation = -1.5708
+text = "02 : 00"
+
+[node name="ResultTableA1" parent="." instance=ExtResource("5_iryac")]
+offset_left = 570.0
+offset_top = 366.0
+offset_right = 619.0
+offset_bottom = 427.0
+rotation = -1.5708
+text = "1
+"
+
+[node name="ResultTableA2" parent="." instance=ExtResource("5_iryac")]
+offset_left = 1895.0
+offset_top = 664.0
+offset_right = 1944.0
+offset_bottom = 725.0
+text = "1
+"
+
+[node name="ResultTableB1" parent="." instance=ExtResource("5_iryac")]
+offset_left = 574.0
+offset_top = 708.0
+offset_right = 623.0
+offset_bottom = 769.0
+rotation = -1.5708
+text = "1
+"
+
+[node name="ResultTableB2" parent="." instance=ExtResource("5_iryac")]
+offset_left = 1894.0
+offset_top = 327.0
+offset_right = 1943.0
+offset_bottom = 388.0
+text = "1
+"
+
+[node name="MatchTimeManager" parent="." instance=ExtResource("6_yenea")]
+
+[node name="SimpleBall" parent="." instance=ExtResource("7_hsxmn")]
+position = Vector2(1237, 808)
+
+[node name="EnemyDisc" parent="." instance=ExtResource("8_8qc28")]
+position = Vector2(1227, 164)
+
+[node name="BasicGameManager" parent="." instance=ExtResource("9_b8iwu")]
+position = Vector2(-52, 46)
+script = ExtResource("10_1oamb")
+playerScore = 0
+enemyScore = 0
+
+[node name="GoalAnimationPlayer" parent="." instance=ExtResource("11_w5iyc")]
+position = Vector2(65, 35)
+
+[node name="GoalAnimationEnemy" parent="." instance=ExtResource("12_iigqf")]
+position = Vector2(8, -38)
+
+[node name="MatchEnded" parent="." instance=ExtResource("13_2g0qo")]
+position = Vector2(1235, 542)
+script = ExtResource("14_jbtmd")
+
+[node name="KickOffSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_h1uca")
+
+[node name="MatchFinishedSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_ai4nb")
+
+[connection signal="matchEnded" from="MatchTimeManager" to="BasicGameManager" method="_on_match_time_manager_match_ended"]

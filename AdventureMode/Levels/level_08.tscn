@@ -1,0 +1,141 @@
+[gd_scene load_steps=20 format=3 uid="uid://cvijdk6pusgq4"]
+
+[ext_resource type="PackedScene" uid="uid://c2c7ampe1m4sd" path="res://Scenes/Arenas/oval_arena.tscn" id="1_vpum0"]
+[ext_resource type="PackedScene" uid="uid://tjbtpxmc3h0u" path="res://AdventureMode/DiscSelector/disc_selector.tscn" id="2_tu0km"]
+[ext_resource type="PackedScene" uid="uid://b6dpvw8by67bq" path="res://Scenes/Football Goals/enemy_goal_zone_ROMBUS.tscn" id="2_u3ojw"]
+[ext_resource type="PackedScene" uid="uid://cntypyj3tblpr" path="res://Scenes/Animations/tutorial.tscn" id="3_8wogd"]
+[ext_resource type="PackedScene" uid="uid://c6c7b1hytdqhq" path="res://Scenes/Football Goals/player_goal_zone_ROMBUS.tscn" id="3_tj4to"]
+[ext_resource type="PackedScene" uid="uid://blpryk1tgtxcb" path="res://Scenes/Buttons/pause_button_adventure.tscn" id="4_7ip88"]
+[ext_resource type="PackedScene" uid="uid://dhhpevr07f2sg" path="res://Scenes/Balls/ball_simple.tscn" id="4_kymw5"]
+[ext_resource type="PackedScene" uid="uid://d1nwtr7swnjhf" path="res://Scenes/Discs_Enemy/enemy_disc_updated.tscn" id="5_ynprd"]
+[ext_resource type="PackedScene" uid="uid://d38le36cl8cw4" path="res://Scenes/Score Panels/timer_presenter_1.tscn" id="6_ftssn"]
+[ext_resource type="PackedScene" uid="uid://b88c8tybxsxgf" path="res://Scenes/Score Panels/result_table_1.tscn" id="7_e6su0"]
+[ext_resource type="PackedScene" uid="uid://c5gthnnlb4mkp" path="res://Scenes/Managers/match_time_manager.tscn" id="8_tfxyk"]
+[ext_resource type="PackedScene" uid="uid://bqj24wsxm32uc" path="res://Scenes/Managers/original_game_manager.tscn" id="9_shcjm"]
+[ext_resource type="Script" path="res://Scenes/Managers/original_game_manager_level4+.gd" id="10_0ctiw"]
+[ext_resource type="PackedScene" uid="uid://dypkrl1b5qfmq" path="res://Scenes/Animations/goal_animation.tscn" id="11_mitk4"]
+[ext_resource type="PackedScene" uid="uid://bfdoc8lb4bnnh" path="res://Scenes/match_ended.tscn" id="11_rykas"]
+[ext_resource type="AudioStream" uid="uid://cbmhtx2dabt0a" path="res://Audio/KickOff.mp3" id="12_5v00m"]
+[ext_resource type="PackedScene" uid="uid://dsxgrd0yd6xwc" path="res://Scenes/Animations/goal_animation_enemy.tscn" id="12_sa5kf"]
+[ext_resource type="AudioStream" uid="uid://w6xa3angrj1m" path="res://Audio/MatchEnded.mp3" id="13_eeac6"]
+[ext_resource type="PackedScene" uid="uid://c16b2k00s8871" path="res://Scenes/Score Panels/level_label.tscn" id="19_jqxv8"]
+
+[node name="level_08" type="Node2D"]
+
+[node name="BasicOvalArena" type="Node2D" parent="."]
+
+[node name="OvalArena" parent="BasicOvalArena" instance=ExtResource("1_vpum0")]
+
+[node name="EnemyGoalZone" parent="BasicOvalArena" instance=ExtResource("2_u3ojw")]
+position = Vector2(538, -497)
+
+[node name="MyGoalZone" parent="BasicOvalArena" instance=ExtResource("3_tj4to")]
+position = Vector2(566, 533)
+
+[node name="SimpleBall" parent="BasicOvalArena" instance=ExtResource("4_kymw5")]
+position = Vector2(1170, 546)
+
+[node name="EnemyDisc" parent="BasicOvalArena" instance=ExtResource("5_ynprd")]
+position = Vector2(1166, 108)
+
+[node name="TimerPresenter1" parent="BasicOvalArena" instance=ExtResource("6_ftssn")]
+offset_left = 1863.0
+offset_top = 439.0
+offset_right = 2055.0
+offset_bottom = 500.0
+text = "02 : 00"
+
+[node name="TimerPresenter2" parent="BasicOvalArena" instance=ExtResource("6_ftssn")]
+offset_left = 533.0
+offset_top = 626.0
+offset_right = 725.0
+offset_bottom = 687.0
+rotation = -1.5708
+text = "02 : 00"
+
+[node name="ResultTableA1" parent="BasicOvalArena" instance=ExtResource("7_e6su0")]
+offset_left = 501.0
+offset_top = 345.0
+offset_right = 550.0
+offset_bottom = 406.0
+rotation = -1.5708
+text = "1
+"
+
+[node name="ResultTableA2" parent="BasicOvalArena" instance=ExtResource("7_e6su0")]
+offset_left = 1881.0
+offset_top = 733.0
+offset_right = 1930.0
+offset_bottom = 794.0
+text = "1
+"
+
+[node name="ResultTableB1" parent="BasicOvalArena" instance=ExtResource("7_e6su0")]
+offset_left = 510.0
+offset_top = 796.0
+offset_right = 559.0
+offset_bottom = 857.0
+rotation = -1.5708
+text = "1
+"
+
+[node name="ResultTableB2" parent="BasicOvalArena" instance=ExtResource("7_e6su0")]
+offset_left = 1886.0
+offset_top = 318.0
+offset_right = 1948.0
+offset_bottom = 379.0
+text = "1
+"
+
+[node name="MatchTimeManager" parent="BasicOvalArena" instance=ExtResource("8_tfxyk")]
+offset_left = 1879.0
+offset_top = 357.0
+offset_right = 1879.0
+offset_bottom = 357.0
+defaultMinutes = 1
+defaultSeconds = 0
+
+[node name="BasicGameManager" parent="BasicOvalArena" instance=ExtResource("9_shcjm")]
+position = Vector2(-115, 38)
+script = ExtResource("10_0ctiw")
+playerScore = 0
+enemyScore = 5
+
+[node name="GoalAnimationPlayer" parent="BasicOvalArena" instance=ExtResource("11_mitk4")]
+position = Vector2(26, 48)
+
+[node name="GoalAnimationEnemy" parent="BasicOvalArena" instance=ExtResource("12_sa5kf")]
+position = Vector2(2396, 1111)
+rotation = 3.14159
+
+[node name="MatchEnded" parent="BasicOvalArena" instance=ExtResource("11_rykas")]
+position = Vector2(1168, 562)
+
+[node name="KickOffSound" type="AudioStreamPlayer2D" parent="BasicOvalArena"]
+stream = ExtResource("12_5v00m")
+
+[node name="MatchFinishedSound" type="AudioStreamPlayer2D" parent="BasicOvalArena"]
+stream = ExtResource("13_eeac6")
+
+[node name="DiscSelector" parent="." instance=ExtResource("2_tu0km")]
+position = Vector2(76, 38)
+
+[node name="Tutorial" parent="." instance=ExtResource("3_8wogd")]
+json_file_path = "res://Tutorial Texts/level08.json"
+
+[node name="PauseButton" parent="." instance=ExtResource("4_7ip88")]
+offset_left = 2162.0
+offset_top = 72.0
+offset_right = 2359.0
+offset_bottom = 251.0
+
+[node name="LevelLabel" parent="." instance=ExtResource("19_jqxv8")]
+offset_left = -162.0
+offset_top = -23.0
+offset_right = 772.0
+offset_bottom = 265.0
+text = "Level 8"
+
+[connection signal="matchEnded" from="BasicOvalArena/MatchTimeManager" to="BasicOvalArena/BasicGameManager" method="_on_match_time_manager_match_ended"]
+[connection signal="finished" from="DiscSelector" to="BasicOvalArena/BasicGameManager" method="_on_disc_selector_finished"]
+[connection signal="finished" from="Tutorial" to="BasicOvalArena/BasicGameManager" method="_on_tutorial_finished"]

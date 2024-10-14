@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxg1kmq2xi2tk"]
+
+[ext_resource type="Texture2D" uid="uid://c2ggk0mxr62or" path="res://Assets/icemap (2).jpg" id="1_wrcfn"]
+
+[node name="Icemap" type="Node2D"]
+
+[node name="Photo" type="Sprite2D" parent="."]
+position = Vector2(1211, 539)
+scale = Vector2(1.01458, 1.00741)
+texture = ExtResource("1_wrcfn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-41, -1)
+scale = Vector2(1.00219, 1.00244)
+polygon = PackedVector2Array(856, 72, 991.828, 68.832, 1006.8, 73.8199, 1008.79, 18.9538, 1034.73, 9.97566, 1445.83, 5.9854, 1460.8, 19.9513, 1462.8, 69.8296, 1653, 72, 1661, 87, 1683, 100, 1706, 121, 1708.96, 944.109, 1797.77, 983.014, 1793, 17, 1346.05, -22.944, 794, 0, 665, 133, 721, 333, 718, 934, 674, 1017, 971, 1076, 1767, 1075, 1805, 1005, 1708, 950, 1701, 971, 1681, 974, 1658, 989, 1642, 1005, 1446.83, 995.571, 1448.83, 1045.45, 1429.87, 1066.4, 1033.74, 1064.4, 1007.79, 1052.43, 995.819, 998.563, 836, 1004, 818, 985, 796, 971, 777, 964, 778, 133, 794, 123, 813, 108, 832, 93)

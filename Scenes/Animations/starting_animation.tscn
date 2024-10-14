@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://boms8mmaux8fp"]
+
+[ext_resource type="Script" path="res://StartingAnimation.gd" id="1_5df5k"]
+[ext_resource type="FontFile" uid="uid://cug67l2gwtw6a" path="res://Assets/LuckiestGuy-Regular.ttf" id="2_vq7s1"]
+[ext_resource type="AudioStream" uid="uid://cn35haowx2r4f" path="res://Audio/Start.mp3" id="3_g1w7m"]
+[ext_resource type="AudioStream" uid="uid://c5a0yv5kmul22" path="res://Audio/NumberSound.mp3" id="4_2r0c8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5re20"]
+font = ExtResource("2_vq7s1")
+font_size = 250
+outline_size = 50
+outline_color = Color(0.221, 0.34, 0.34, 1)
+
+[node name="StartingAnimation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5df5k")
+
+[node name="Countdown" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1086.0
+offset_top = 418.0
+offset_right = 1472.0
+offset_bottom = 669.0
+text = "1
+"
+label_settings = SubResource("LabelSettings_5re20")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KickOffSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_g1w7m")
+volume_db = 14.0
+
+[node name="Beep" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_2r0c8")
+volume_db = 14.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

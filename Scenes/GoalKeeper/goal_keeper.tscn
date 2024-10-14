@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcvrwamj3uexu"]
+
+[ext_resource type="Texture2D" uid="uid://bvusfytqvmw47" path="res://Assets/Másik Korong.png" id="1_5o43c"]
+[ext_resource type="Script" path="res://Scenes/GoalKeeper/goal_keeper.gd" id="1_hbsea"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6fisx"]
+radius = 21.0238
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k3mpj"]
+radius = 21.0
+
+[node name="GoalKeeper" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_hbsea")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.499999, 9.5)
+scale = Vector2(0.094, 0.13)
+texture = ExtResource("1_5o43c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6fisx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_k3mpj")

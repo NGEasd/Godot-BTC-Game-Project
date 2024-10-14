@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvxvupynyo5tg"]
+
+[ext_resource type="Script" path="res://Scenes/Football Goals/Scripts/GoalZone2.tres.gd" id="1_pj2gg"]
+[ext_resource type="Texture2D" uid="uid://c68tlx3dvthw8" path="res://Assets/újkapu_tulsó.png" id="2_dvr8s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7se6a"]
+size = Vector2(475, 18)
+
+[node name="EnemyGoalZone" type="Node2D"]
+z_index = 2
+
+[node name="GoalZone" type="Area2D" parent="."]
+collision_mask = 15
+script = ExtResource("1_pj2gg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalZone"]
+position = Vector2(586.5, 503)
+shape = SubResource("RectangleShape2D_7se6a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(571.5, 529.5)
+scale = Vector2(0.170368, 0.096176)
+texture = ExtResource("2_dvr8s")
+
+[connection signal="body_entered" from="GoalZone" to="GoalZone" method="_on_body_entered"]

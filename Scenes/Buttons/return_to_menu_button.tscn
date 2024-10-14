@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://wj0ipvb3qx5l"]
+
+[ext_resource type="Script" path="res://Scenes/Buttons/return_to_menu_button.gd" id="1_n1g3h"]
+[ext_resource type="Texture2D" uid="uid://c15ununit6rlj" path="res://Assets/1726157983136.jpg" id="2_vsgfx"]
+[ext_resource type="FontFile" uid="uid://cug67l2gwtw6a" path="res://Assets/LuckiestGuy-Regular.ttf" id="3_6dcmj"]
+[ext_resource type="AudioStream" uid="uid://c5a0yv5kmul22" path="res://Audio/NumberSound.mp3" id="4_q41aj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_keasn"]
+font = ExtResource("3_6dcmj")
+font_size = 43
+font_color = Color(0.784314, 1, 1, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Return" type="Node2D"]
+script = ExtResource("1_n1g3h")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -200.0
+offset_top = -58.0
+offset_right = 199.0
+offset_bottom = 58.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.999999, 0)
+scale = Vector2(0.161705, 0.147772)
+texture = ExtResource("2_vsgfx")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -251.0
+offset_top = -71.0
+offset_right = 256.0
+offset_bottom = 88.0
+text = "Return to menu"
+label_settings = SubResource("LabelSettings_keasn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Beep" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_q41aj")
+volume_db = 11.763
+pitch_scale = 4.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

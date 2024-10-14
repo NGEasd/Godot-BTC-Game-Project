@@ -1,0 +1,117 @@
+[gd_scene load_steps=17 format=3 uid="uid://dsl2du5nubh4d"]
+
+[ext_resource type="PackedScene" uid="uid://dloeormcor3d1" path="res://Scenes/Arenas/basic_arena.tscn" id="1_1se1l"]
+[ext_resource type="PackedScene" uid="uid://d38le36cl8cw4" path="res://Scenes/Score Panels/timer_presenter_1.tscn" id="2_6u4dn"]
+[ext_resource type="PackedScene" uid="uid://b88c8tybxsxgf" path="res://Scenes/Score Panels/result_table_1.tscn" id="3_ig5hb"]
+[ext_resource type="PackedScene" uid="uid://c5gthnnlb4mkp" path="res://Scenes/Managers/match_time_manager.tscn" id="4_l2oku"]
+[ext_resource type="PackedScene" uid="uid://dhhpevr07f2sg" path="res://Scenes/Balls/ball_simple.tscn" id="5_wi6qg"]
+[ext_resource type="PackedScene" uid="uid://dsos0xlyffm8j" path="res://Scenes/Discs_Players/player_one.tscn" id="6_vwxam"]
+[ext_resource type="PackedScene" uid="uid://ghp4cv3io3hx" path="res://Scenes/Discs_Players/player_two.tscn" id="7_ps8jn"]
+[ext_resource type="PackedScene" uid="uid://bvxvupynyo5tg" path="res://Scenes/Football Goals/enemy_goal_zone.tscn" id="8_iqdyr"]
+[ext_resource type="PackedScene" uid="uid://n8gop7h1ii3n" path="res://Scenes/Football Goals/my_goal_zone.tscn" id="9_mqnmo"]
+[ext_resource type="PackedScene" uid="uid://bhy22v0g81e1x" path="res://Scenes/Managers/basic_game_manager.tscn" id="10_mb2oq"]
+[ext_resource type="PackedScene" uid="uid://dypkrl1b5qfmq" path="res://Scenes/Animations/goal_animation.tscn" id="11_v8ewi"]
+[ext_resource type="PackedScene" uid="uid://dsxgrd0yd6xwc" path="res://Scenes/Animations/goal_animation_enemy.tscn" id="12_ax6gl"]
+[ext_resource type="PackedScene" uid="uid://b4xhbl5uucb8w" path="res://Scenes/match_ended1v1.tscn" id="13_1etag"]
+[ext_resource type="AudioStream" uid="uid://cbmhtx2dabt0a" path="res://Audio/KickOff.mp3" id="14_di8tt"]
+[ext_resource type="AudioStream" uid="uid://w6xa3angrj1m" path="res://Audio/MatchEnded.mp3" id="15_vaj75"]
+[ext_resource type="PackedScene" uid="uid://db2dm0pykjtd5" path="res://Scenes/Buttons/pause_button.tscn" id="16_rqlk8"]
+
+[node name="BasicLevel" type="Node2D"]
+
+[node name="BasicArena" parent="." instance=ExtResource("1_1se1l")]
+position = Vector2(8, -6)
+
+[node name="TimerPresenter1" parent="." instance=ExtResource("2_6u4dn")]
+offset_left = 1835.0
+offset_top = 461.0
+offset_right = 1950.0
+offset_bottom = 522.0
+text = "00 : 00"
+
+[node name="TimerPresenter2" parent="." instance=ExtResource("2_6u4dn")]
+offset_left = 729.0
+offset_top = 614.0
+offset_right = 921.0
+offset_bottom = 675.0
+rotation = -1.5708
+text = "02 : 00"
+
+[node name="ResultTableA1" parent="." instance=ExtResource("3_ig5hb")]
+offset_left = 732.0
+offset_top = 372.0
+offset_right = 781.0
+offset_bottom = 433.0
+rotation = -1.5708
+text = "1
+"
+
+[node name="ResultTableA2" parent="." instance=ExtResource("3_ig5hb")]
+offset_left = 1839.0
+offset_top = 670.0
+offset_right = 1888.0
+offset_bottom = 731.0
+text = "1
+"
+
+[node name="ResultTableB1" parent="." instance=ExtResource("3_ig5hb")]
+offset_left = 737.0
+offset_top = 718.0
+offset_right = 786.0
+offset_bottom = 779.0
+rotation = -1.5708
+text = "1
+"
+
+[node name="ResultTableB2" parent="." instance=ExtResource("3_ig5hb")]
+offset_left = 1833.0
+offset_top = 323.0
+offset_right = 1882.0
+offset_bottom = 384.0
+text = "1
+"
+
+[node name="MatchTimeManager" parent="." instance=ExtResource("4_l2oku")]
+defaultMinutes = 1
+defaultSeconds = 0
+
+[node name="SimpleBall" parent="." instance=ExtResource("5_wi6qg")]
+position = Vector2(1283, 519)
+
+[node name="PlayerOne" parent="." instance=ExtResource("6_vwxam")]
+position = Vector2(1289, 881)
+
+[node name="PlayerTwo" parent="." instance=ExtResource("7_ps8jn")]
+position = Vector2(408, -291)
+
+[node name="EnemyGoalZone" parent="." instance=ExtResource("8_iqdyr")]
+position = Vector2(702, -416)
+
+[node name="MyGoalZone" parent="." instance=ExtResource("9_mqnmo")]
+position = Vector2(1280, 961)
+
+[node name="BasicGameManager" parent="." instance=ExtResource("10_mb2oq")]
+
+[node name="GoalAnimationPlayer" parent="." instance=ExtResource("11_v8ewi")]
+position = Vector2(93, 37)
+
+[node name="GoalAnimationEnemy" parent="." instance=ExtResource("12_ax6gl")]
+position = Vector2(49, -36)
+
+[node name="MatchEnded" parent="." instance=ExtResource("13_1etag")]
+position = Vector2(1225, 517)
+
+[node name="KickOffSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_di8tt")
+
+[node name="MatchFinishedSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_vaj75")
+
+[node name="PauseButton" parent="." instance=ExtResource("16_rqlk8")]
+z_index = 3
+offset_left = 44.0
+offset_top = 22.0
+offset_right = 240.0
+offset_bottom = 199.0
+
+[connection signal="matchEnded" from="MatchTimeManager" to="BasicGameManager" method="_on_match_time_manager_match_ended"]

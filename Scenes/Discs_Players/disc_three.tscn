@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://nc6n1ovmaq3n"]
+
+[ext_resource type="Script" path="res://Scenes/Discs_Players/player_one.gd" id="1_sqt0l"]
+[ext_resource type="Script" path="res://Scenes/Discs_Players/PlayerDiscThree.gd" id="2_rp0f2"]
+[ext_resource type="Texture2D" uid="uid://0hawqgqodoac" path="res://Assets/1726057801192.png" id="3_88l8i"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="4_qudc6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rjapk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1qq13"]
+radius = 69.0
+
+[node name="PlayerOne" type="Node2D"]
+position = Vector2(0, 3)
+script = ExtResource("1_sqt0l")
+
+[node name="PlayerDisc" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 7
+mass = 1.75
+physics_material_override = SubResource("PhysicsMaterial_rjapk")
+gravity_scale = 0.0
+max_contacts_reported = 10
+contact_monitor = true
+script = ExtResource("2_rp0f2")
+speed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerDisc"]
+position = Vector2(0.500008, -4.17233e-06)
+scale = Vector2(0.132407, 0.133333)
+texture = ExtResource("3_88l8i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDisc"]
+shape = SubResource("CircleShape2D_1qq13")
+
+[node name="PlayerController" type="Control" parent="PlayerDisc"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Test" type="Node2D" parent="PlayerDisc/PlayerController"]
+position = Vector2(-50, -60)
+
+[node name="UI" type="CanvasLayer" parent="PlayerDisc/PlayerController/Test"]
+
+[node name="VirtualJoystick" parent="PlayerDisc/PlayerController/Test/UI" instance=ExtResource("4_qudc6")]
+offset_left = 69.0
+offset_top = -352.0
+offset_right = 369.0
+offset_bottom = -52.0
+
+[connection signal="body_entered" from="PlayerDisc" to="PlayerDisc" method="_on_body_entered"]

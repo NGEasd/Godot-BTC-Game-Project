@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpkg8ysnm5uwv"]
+
+[ext_resource type="Texture2D" uid="uid://3gyj6vj2v3bc" path="res://Assets/Pálya-kép.jpg" id="1_a7odr"]
+[ext_resource type="PackedScene" uid="uid://bjwg61vowwuhp" path="res://Scenes/player_goal.tscn" id="2_1j68v"]
+[ext_resource type="PackedScene" uid="uid://chd4iltf5qewh" path="res://Scenes/game_manager.tscn" id="2_4b206"]
+[ext_resource type="PackedScene" uid="uid://cfwcabf3cqsgd" path="res://Scenes/enemy_goal.tscn" id="3_7m5cv"]
+[ext_resource type="PackedScene" uid="uid://ndvgxtijmatp" path="res://Scenes/score_panel.tscn" id="3_u3b47"]
+[ext_resource type="PackedScene" uid="uid://doaq4dixitkgc" path="res://Scenes/match_timer.tscn" id="3_x0nyn"]
+[ext_resource type="PackedScene" path="res://Scenes/player_disc.tscn" id="8_nkjdu"]
+[ext_resource type="PackedScene" uid="uid://6gy3csfj5ga8" path="res://Scenes/Balls/ball.tscn" id="8_rfm3k"]
+
+[node name="Pitch" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(652, 328)
+scale = Vector2(0.680396, 0.605093)
+texture = ExtResource("1_a7odr")
+
+[node name="GameManager" parent="Sprite2D" instance=ExtResource("2_4b206")]
+position = Vector2(-1037.63, -474.307)
+
+[node name="MatchTimer" parent="Sprite2D/GameManager" instance=ExtResource("3_x0nyn")]
+offset_left = 70.5462
+offset_top = 36.3578
+offset_right = 235.546
+offset_bottom = 119.358
+
+[node name="ScorePanel" parent="Sprite2D/GameManager" instance=ExtResource("3_u3b47")]
+offset_left = -2.94045
+offset_top = -23.1372
+offset_right = -2.94045
+offset_bottom = -23.1372
+
+[node name="PlayerGoal" parent="Sprite2D" instance=ExtResource("2_1j68v")]
+position = Vector2(-276.31, -8.26324)
+
+[node name="EnemyGoal" parent="Sprite2D" instance=ExtResource("3_7m5cv")]
+position = Vector2(610.673, -2.06586)
+
+[node name="PitchBorder" type="StaticBody2D" parent="Sprite2D"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/PitchBorder"]
+position = Vector2(0.734866, -5.37113)
+polygon = PackedVector2Array(-324.076, -276.404, -324.076, -398.699, -221.195, -463.152, 563.642, -466.458, 665.054, -385.478, 694.448, -314.415, 687.1, 222.693, 579.809, 259.051, 579.809, 73.9556, 632.719, 62.3871, 628.31, -83.0452, 578.339, -96.2663, 579.809, -271.446, 525.429, -292.93, 506.323, -334.246, -178.572, -334.246, -202.088, -291.278, -249.12, -266.488, -249.12, -86.3505, -294.681, -83.0452, -301.295, 64.4529, -248.385, 72.7161, -248.385, 261.117, -214.581, 267.728, -192.535, 284.254, -173.428, 315.654, 507.057, 322.265, 526.164, 280.949, 554.089, 267.728, 574.665, 259.464, 686.365, 224.759, 689.304, 340.444, 549.68, 449.518, -107.29, 449.518, -295.416, 432.992, -330.69, 251.201, -331.424, -81.3925)
+
+[node name="Ball" parent="." instance=ExtResource("8_rfm3k")]
+position = Vector2(178, 33)
+
+[node name="PlayerDisc" parent="." instance=ExtResource("8_nkjdu")]
+position = Vector2(215, 138)

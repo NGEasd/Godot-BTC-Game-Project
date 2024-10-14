@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxx6cxwnnrlia"]
+
+[ext_resource type="Script" path="res://Back.gd" id="1_kp313"]
+[ext_resource type="Texture2D" uid="uid://bx7jk12mn1e1q" path="res://Assets/BackButton.jpg" id="2_0t8mv"]
+[ext_resource type="AudioStream" uid="uid://c5a0yv5kmul22" path="res://Audio/NumberSound.mp3" id="3_npekf"]
+
+[node name="Back" type="Node2D"]
+script = ExtResource("1_kp313")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -231.0
+offset_top = -86.0
+offset_right = 232.0
+offset_bottom = 91.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.00001, 2)
+scale = Vector2(0.189375, 0.166876)
+texture = ExtResource("2_0t8mv")
+
+[node name="Beep" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-284, -107)
+stream = ExtResource("3_npekf")
+volume_db = 11.763
+pitch_scale = 4.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

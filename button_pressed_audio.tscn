@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0if6xsux6bv4"]
+
+[ext_resource type="AudioStream" uid="uid://ch01dpcd00yg5" path="res://Audio/ButtonPressed.mp3" id="1_uk7yt"]
+
+[node name="ButtonPressedAudio" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_uk7yt")
+volume_db = 5.0
+pitch_scale = 1.22

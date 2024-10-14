@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://2rqds871j2"]
+
+[ext_resource type="Script" path="res://Scripts/GoalZone2.gd" id="1_e7qtt"]
+[ext_resource type="Texture2D" uid="uid://d2asbnwbn1eds" path="res://Assets/újkapu.png" id="2_e4l04"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7se6a"]
+size = Vector2(482, 29)
+
+[node name="MyGoalZone" type="Node2D"]
+
+[node name="GoalZone" type="Area2D" parent="."]
+script = ExtResource("1_e7qtt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalZone"]
+position = Vector2(554, 537.5)
+shape = SubResource("RectangleShape2D_7se6a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(571.5, 516.5)
+scale = Vector2(0.170368, 0.103129)
+texture = ExtResource("2_e4l04")
+
+[connection signal="body_entered" from="GoalZone" to="GoalZone" method="_on_body_entered"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1nwtr7swnjhf"]
+
+[ext_resource type="Script" path="res://Scenes/Discs_Enemy/enemy_disc_updated.gd" id="1_cq2eb"]
+[ext_resource type="Texture2D" uid="uid://cqhty5mcpwrsu" path="res://Assets/enemz.png" id="2_0u7oh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ls6j4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xvnk1"]
+radius = 55.0818
+
+[node name="EnemyDisc" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_ls6j4")
+gravity_scale = 0.0
+max_contacts_reported = 2
+script = ExtResource("1_cq2eb")
+difficulty = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 0.199403)
+scale = Vector2(0.364672, 0.363536)
+texture = ExtResource("2_0u7oh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_xvnk1")
+one_way_collision_margin = 0.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

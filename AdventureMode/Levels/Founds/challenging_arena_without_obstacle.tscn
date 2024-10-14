@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv4diekh2nbcv"]
+
+[ext_resource type="Texture2D" uid="uid://c8r4y6kxsbrqb" path="res://Assets/akadályos.jpg" id="1_eiuyi"]
+
+[node name="ChallengingArenaWithoutObstacle" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1209, 544.75)
+scale = Vector2(1.19141, 1.2253)
+texture = ExtResource("1_eiuyi")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1014, 92, 949, 94, 892, 99, 818, 114, 769, 137, 683, 216, 683, 470, 680, 611, 693, 850, 724, 890, 778, 918, 860, 950, 932, 969, 988, 975, 1015, 979, 1015.57, 1017.62, 1035, 1036, 1050, 1054, 613, 1076, 616, 198, 840, -4, 959, -24, 1581, -23, 1849, 154, 1886, 264, 1883, 764, 1901, 978, 1795, 1109, 1031, 1099, 1053, 1056, 1451, 1052, 1477, 1037, 1482, 980, 1532, 981, 1624, 975, 1683, 948, 1750, 892, 1795, 831, 1812, 609, 1814, 448, 1806, 254, 1779, 166, 1668, 100, 1558, 85, 1471, 90, 1465, 24, 1422, 12, 1059, 12, 1016, 18)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhy22v0g81e1x"]
+
+[ext_resource type="Script" path="res://Scripts/Managers/basic_game_manager.gd" id="1_dprr4"]
+[ext_resource type="PackedScene" uid="uid://boms8mmaux8fp" path="res://Scenes/Animations/starting_animation.tscn" id="2_nb7ul"]
+
+[node name="BasicGameManager" type="Node2D"]
+script = ExtResource("1_dprr4")
+
+[node name="StartingAnimation" parent="." instance=ExtResource("2_nb7ul")]
+
+[connection signal="animation_finished" from="StartingAnimation" to="." method="_on_starting_animation_animation_finished"]

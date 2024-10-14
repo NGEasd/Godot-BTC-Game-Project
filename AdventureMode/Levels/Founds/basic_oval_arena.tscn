@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=3 uid="uid://bq3j4tul5kwg"]
+
+[ext_resource type="PackedScene" uid="uid://c2c7ampe1m4sd" path="res://Scenes/Arenas/oval_arena.tscn" id="1_2jwoi"]
+[ext_resource type="PackedScene" uid="uid://b6dpvw8by67bq" path="res://Scenes/Football Goals/enemy_goal_zone_ROMBUS.tscn" id="2_yjdux"]
+[ext_resource type="PackedScene" uid="uid://c6c7b1hytdqhq" path="res://Scenes/Football Goals/player_goal_zone_ROMBUS.tscn" id="3_35yx0"]
+[ext_resource type="PackedScene" uid="uid://dhhpevr07f2sg" path="res://Scenes/Balls/ball_simple.tscn" id="4_sra34"]
+[ext_resource type="PackedScene" uid="uid://d1nwtr7swnjhf" path="res://Scenes/Discs_Enemy/enemy_disc_updated.tscn" id="5_3rjcl"]
+[ext_resource type="PackedScene" uid="uid://d38le36cl8cw4" path="res://Scenes/Score Panels/timer_presenter_1.tscn" id="6_e1228"]
+[ext_resource type="PackedScene" uid="uid://b88c8tybxsxgf" path="res://Scenes/Score Panels/result_table_1.tscn" id="7_qidvn"]
+[ext_resource type="PackedScene" uid="uid://c5gthnnlb4mkp" path="res://Scenes/Managers/match_time_manager.tscn" id="8_4melg"]
+[ext_resource type="PackedScene" uid="uid://bqj24wsxm32uc" path="res://Scenes/Managers/original_game_manager.tscn" id="9_1dpyv"]
+[ext_resource type="Script" path="res://Scenes/Managers/original_game_manager_level4+.gd" id="10_mswg6"]
+[ext_resource type="PackedScene" uid="uid://bfdoc8lb4bnnh" path="res://Scenes/match_ended.tscn" id="11_4n3f7"]
+[ext_resource type="AudioStream" uid="uid://cbmhtx2dabt0a" path="res://Audio/KickOff.mp3" id="12_d53ft"]
+[ext_resource type="AudioStream" uid="uid://w6xa3angrj1m" path="res://Audio/MatchEnded.mp3" id="13_dsu56"]
+
+[node name="BasicOvalArena" type="Node2D"]
+
+[node name="OvalArena" parent="." instance=ExtResource("1_2jwoi")]
+
+[node name="EnemyGoalZone" parent="." instance=ExtResource("2_yjdux")]
+position = Vector2(538, -497)
+
+[node name="MyGoalZone" parent="." instance=ExtResource("3_35yx0")]
+position = Vector2(566, 533)
+
+[node name="SimpleBall" parent="." instance=ExtResource("4_sra34")]
+position = Vector2(1170, 546)
+
+[node name="EnemyDisc" parent="." instance=ExtResource("5_3rjcl")]
+position = Vector2(1166, 108)
+
+[node name="TimerPresenter1" parent="." instance=ExtResource("6_e1228")]
+offset_left = 1863.0
+offset_top = 439.0
+offset_right = 2055.0
+offset_bottom = 500.0
+text = "02 : 00"
+
+[node name="TimerPresenter2" parent="." instance=ExtResource("6_e1228")]
+offset_left = 533.0
+offset_top = 626.0
+offset_right = 725.0
+offset_bottom = 687.0
+rotation = -1.5708
+text = "02 : 00"
+
+[node name="ResultTableA1" parent="." instance=ExtResource("7_qidvn")]
+offset_left = 501.0
+offset_top = 345.0
+offset_right = 550.0
+offset_bottom = 406.0
+rotation = -1.5708
+text = "1
+"
+
+[node name="ResultTableA2" parent="." instance=ExtResource("7_qidvn")]
+offset_left = 1881.0
+offset_top = 733.0
+offset_right = 1930.0
+offset_bottom = 794.0
+text = "1
+"
+
+[node name="ResultTableB1" parent="." instance=ExtResource("7_qidvn")]
+offset_left = 510.0
+offset_top = 796.0
+offset_right = 559.0
+offset_bottom = 857.0
+rotation = -1.5708
+text = "1
+"
+
+[node name="ResultTableB2" parent="." instance=ExtResource("7_qidvn")]
+offset_left = 1886.0
+offset_top = 318.0
+offset_right = 1948.0
+offset_bottom = 379.0
+text = "1
+"
+
+[node name="MatchTimeManager" parent="." instance=ExtResource("8_4melg")]
+offset_left = 1879.0
+offset_top = 357.0
+offset_right = 1879.0
+offset_bottom = 357.0
+defaultMinutes = 1
+defaultSeconds = 30
+
+[node name="BasicGameManager" parent="." instance=ExtResource("9_1dpyv")]
+position = Vector2(-115, 38)
+script = ExtResource("10_mswg6")
+playerScore = 0
+enemyScore = 4
+
+[node name="MatchEnded" parent="." instance=ExtResource("11_4n3f7")]
+visible = false
+position = Vector2(1168, 562)
+
+[node name="KickOffSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_d53ft")
+
+[node name="MatchFinishedSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_dsu56")
+
+[connection signal="matchEnded" from="MatchTimeManager" to="BasicGameManager" method="_on_match_time_manager_match_ended"]

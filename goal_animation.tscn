@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://bp8a303onkahs"]
+
+[ext_resource type="Script" path="res://GoalAnimation.gd" id="1_4cjx3"]
+[ext_resource type="Texture2D" uid="uid://bmgm2u5ce2ptm" path="res://Assets/GoalAnimatione.png" id="2_svl6p"]
+[ext_resource type="AudioStream" uid="uid://bveixa13tlemx" path="res://Audio/GOALLL.mp3" id="4_hxv73"]
+
+[sub_resource type="Animation" id="Animation_oyt86"]
+resource_name = "goalll"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GoalImage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(207, 910), Vector2(1182, 524)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GoalImage:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 12.5664]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GoalImage:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.6, 3.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jg0y"]
+_data = {
+"goalll": SubResource("Animation_oyt86")
+}
+
+[node name="GoalAnimation" type="Node2D"]
+light_mask = 4
+script = ExtResource("1_4cjx3")
+
+[node name="GoalImage" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(207, 910)
+scale = Vector2(1.19878, 1.11685)
+texture = ExtResource("2_svl6p")
+
+[node name="goool" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_8jg0y")
+}
+
+[node name="goal" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_hxv73")
+volume_db = 4.16
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -277.0
+offset_top = -241.0
+offset_right = 2752.0
+offset_bottom = 1358.0
+color = Color(1, 1, 1, 0.215686)

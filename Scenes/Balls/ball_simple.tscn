@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhhpevr07f2sg"]
+
+[ext_resource type="Script" path="res://Scripts/ball.gd" id="1_oc5jg"]
+[ext_resource type="Texture2D" uid="uid://dycmdopfn4e2t" path="res://Assets/Labda.png" id="2_qkkvo"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ycamb"]
+bounce = 0.03
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_16x60"]
+radius = 39.0512
+
+[node name="SimpleBall" type="RigidBody2D"]
+position = Vector2(2, 0)
+collision_mask = 7
+mass = 0.21
+physics_material_override = SubResource("PhysicsMaterial_ycamb")
+gravity_scale = 0.0
+max_contacts_reported = 10
+contact_monitor = true
+script = ExtResource("1_oc5jg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.99994, 4.00006)
+scale = Vector2(0.31, 0.322)
+texture = ExtResource("2_qkkvo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+shape = SubResource("CircleShape2D_16x60")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

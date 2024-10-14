@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfdoc8lb4bnnh"]
+
+[ext_resource type="Script" path="res://MatchEnded.gd" id="1_52hd4"]
+[ext_resource type="Texture2D" uid="uid://chmer5cy006qn" path="res://Assets/1722768097209.jpg" id="2_tueub"]
+[ext_resource type="FontFile" uid="uid://cug67l2gwtw6a" path="res://Assets/LuckiestGuy-Regular.ttf" id="3_cx6ny"]
+[ext_resource type="Texture2D" uid="uid://bjf8tgwxqvxd2" path="res://Assets/Checkmark.png" id="5_pg0ex"]
+[ext_resource type="Texture2D" uid="uid://c2vwumi46r8oj" path="res://Assets/GreenWin.png" id="6_kb307"]
+[ext_resource type="Texture2D" uid="uid://cw566ko6ugkqs" path="res://Assets/DrawPeace.png" id="7_2abdd"]
+[ext_resource type="PackedScene" uid="uid://d0if6xsux6bv4" path="res://button_pressed_audio.tscn" id="8_5yvfs"]
+[ext_resource type="PackedScene" uid="uid://c44dwnxl4uhuc" path="res://Scenes/Buttons/next_button.tscn" id="8_nu5c2"]
+[ext_resource type="PackedScene" uid="uid://wj0ipvb3qx5l" path="res://Scenes/Buttons/return_to_menu_button.tscn" id="9_74qgi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7fodv"]
+font = ExtResource("3_cx6ny")
+font_size = 85
+font_color = Color(0.509804, 0.741176, 1, 1)
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MatchEnded" type="Node2D"]
+z_index = 3
+script = ExtResource("1_52hd4")
+
+[node name="Box" type="Sprite2D" parent="."]
+position = Vector2(9.5, 5.99999)
+scale = Vector2(0.99359, 0.930403)
+texture = ExtResource("2_tueub")
+
+[node name="Results" type="Label" parent="."]
+offset_left = -495.0
+offset_top = -273.0
+offset_right = 509.0
+offset_bottom = -187.0
+text = "results: YOU LOST!"
+label_settings = SubResource("LabelSettings_7fodv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LostPhoto" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(10, 6)
+scale = Vector2(1.26638, 1.12963)
+texture = ExtResource("5_pg0ex")
+
+[node name="WinPhoto" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 59)
+texture = ExtResource("6_kb307")
+
+[node name="DrawPhoto" type="Sprite2D" parent="."]
+position = Vector2(-20, -2)
+scale = Vector2(1.23647, 1.1453)
+texture = ExtResource("7_2abdd")
+
+[node name="ButtonPressedAudio" parent="." instance=ExtResource("8_5yvfs")]
+
+[node name="NextButton" parent="." instance=ExtResource("8_nu5c2")]
+position = Vector2(239, 301)
+
+[node name="Return" parent="." instance=ExtResource("9_74qgi")]
+position = Vector2(-242, 302)

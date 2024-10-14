@@ -1,0 +1,150 @@
+[gd_scene load_steps=15 format=3 uid="uid://tjbtpxmc3h0u"]
+
+[ext_resource type="Script" path="res://AdventureMode/DiscSelector/disc_selector.gd" id="1_bvthq"]
+[ext_resource type="Texture2D" uid="uid://c0w2qwursxku8" path="res://addons/1726060569731.jpg" id="1_s68fk"]
+[ext_resource type="Texture2D" uid="uid://btmmvtmxawxwv" path="res://Assets/Alap Korong.png" id="2_vxvt2"]
+[ext_resource type="Script" path="res://basic.gd" id="3_cqyqq"]
+[ext_resource type="FontFile" uid="uid://cug67l2gwtw6a" path="res://Assets/LuckiestGuy-Regular.ttf" id="4_m1lry"]
+[ext_resource type="Texture2D" uid="uid://dqqyxetw3apv7" path="res://Assets/1726056398695.png" id="5_sii62"]
+[ext_resource type="Texture2D" uid="uid://0hawqgqodoac" path="res://Assets/1726057801192.png" id="6_65sb0"]
+[ext_resource type="Script" path="res://AdventureMode/DiscSelector/small.gd" id="6_xk4ja"]
+[ext_resource type="Script" path="res://AdventureMode/DiscSelector/big.gd" id="8_kkxry"]
+[ext_resource type="PackedScene" uid="uid://d0if6xsux6bv4" path="res://button_pressed_audio.tscn" id="9_phvh6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nvrlg"]
+line_spacing = 2.0
+font = ExtResource("4_m1lry")
+font_size = 42
+outline_size = 20
+outline_color = Color(0.04, 0.04, 0.04, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w6nfx"]
+font = ExtResource("4_m1lry")
+font_size = 170
+outline_size = 70
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qc8jd"]
+font = ExtResource("4_m1lry")
+font_size = 126
+outline_size = 60
+outline_color = Color(0.06, 0.06, 0.06, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1yryt"]
+font = ExtResource("4_m1lry")
+font_size = 40
+font_color = Color(1, 0.03, 0.03, 1)
+outline_size = 25
+
+[node name="DiscSelector" type="Node2D"]
+z_index = 3
+script = ExtResource("1_bvthq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -300.0
+offset_top = -104.0
+offset_right = 2808.0
+offset_bottom = 1212.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 0.654902)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1251, 521)
+scale = Vector2(0.825521, 0.772222)
+texture = ExtResource("1_s68fk")
+
+[node name="basic" type="Sprite2D" parent="."]
+position = Vector2(740.5, 536.406)
+scale = Vector2(0.63145, 0.739839)
+texture = ExtResource("2_vxvt2")
+script = ExtResource("3_cqyqq")
+
+[node name="selector" type="Button" parent="basic"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -277.932
+offset_top = -160.043
+offset_right = 309.068
+offset_bottom = 327.957
+
+[node name="description" type="Label" parent="basic"]
+offset_left = -200.0
+offset_top = 175.0
+offset_right = 283.0
+offset_bottom = 317.0
+text = "- medium size
+- medium speed
+- medium shot power"
+label_settings = SubResource("LabelSettings_nvrlg")
+
+[node name="small" type="Sprite2D" parent="."]
+position = Vector2(1252, 548)
+scale = Vector2(0.187963, 0.187269)
+texture = ExtResource("5_sii62")
+script = ExtResource("6_xk4ja")
+
+[node name="selector" type="Button" parent="small"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -1000.2
+offset_top = -763.607
+offset_right = 1063.8
+offset_bottom = 1244.39
+
+[node name="Label" type="Label" parent="small"]
+offset_left = -707.586
+offset_top = 651.469
+offset_right = 751.414
+offset_bottom = 1170.47
+text = "- small size
+- high speed
+- low shot power"
+label_settings = SubResource("LabelSettings_w6nfx")
+
+[node name="big" type="Sprite2D" parent="."]
+position = Vector2(1756, 540)
+scale = Vector2(0.259375, 0.242361)
+texture = ExtResource("6_65sb0")
+script = ExtResource("8_kkxry")
+
+[node name="selector" type="Button" parent="big"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -747.952
+offset_top = -557.02
+offset_right = 794.048
+offset_bottom = 1001.98
+
+[node name="Label" type="Label" parent="big"]
+offset_left = -555.181
+offset_top = 577.651
+offset_right = 584.819
+offset_bottom = 976.651
+text = "- big size
+- low speed
+- high shot power"
+label_settings = SubResource("LabelSettings_qc8jd")
+
+[node name="ButtonPressedAudio" parent="." instance=ExtResource("9_phvh6")]
+position = Vector2(410.665, 196.118)
+scale = Vector2(0.138268, 0.115607)
+pitch_scale = 1.09
+
+[node name="NewLabelSmall" type="Label" parent="."]
+offset_left = 1301.0
+offset_top = 444.0
+offset_right = 1395.0
+offset_bottom = 485.0
+text = "NEW!"
+label_settings = SubResource("LabelSettings_1yryt")
+
+[node name="NewLabelBig" type="Label" parent="."]
+offset_left = 1831.0
+offset_top = 448.0
+offset_right = 1925.0
+offset_bottom = 489.0
+text = "NEW!"
+label_settings = SubResource("LabelSettings_1yryt")
+
+[connection signal="finished" from="basic" to="." method="_on_basic_finished"]
+[connection signal="pressed" from="basic/selector" to="basic" method="_on_selector_pressed"]
+[connection signal="finished" from="small" to="." method="_on_small_finished"]
+[connection signal="pressed" from="small/selector" to="small" method="_on_selector_pressed"]
+[connection signal="finished" from="big" to="." method="_on_big_finished"]
+[connection signal="pressed" from="big/selector" to="big" method="_on_selector_pressed"]

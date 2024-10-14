@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5gthnnlb4mkp"]
+
+[ext_resource type="Script" path="res://Scripts/Managers/match_time_manager.gd" id="1_rvdn4"]
+
+[node name="MatchTimeManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rvdn4")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cirtlfakk8em1"]
+
+[ext_resource type="Texture2D" uid="uid://dclu5vv2ak8ba" path="res://Assets/igazirombuszpalya.jpg" id="1_fqqfa"]
+
+[node name="RombusArena" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1199, 537.25)
+scale = Vector2(1.19043, 1.19164)
+texture = ExtResource("1_fqqfa")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(797, 321, 792, 348, 810, 394, 822, 464, 821, 535, 811, 606, 800, 642, 797, 685, 819, 725, 1038, 898, 1065, 925, 1065, 968, 1074, 985, 1097, 995, 1385, 993, 1387, 927, 1409, 903, 1653.57, 705.963, 1671, 674, 1672, 640, 1656, 592, 1647, 513, 1652, 449, 1663, 401, 1674, 366, 1674, 332, 1646.19, 301.889, 1413, 117, 1389, 101, 1389, 73.0438, 1389, 5, 1789, 298, 1789, 750, 1377, 1075, 1074, 1074, 682, 763, 682, 237, 1018, 3, 1386, 7, 1385, 63, 1355, 29, 1063, 27, 1064, 106, 1035, 116, 826.615, 282.23)

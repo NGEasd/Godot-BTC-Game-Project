@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://cnif2efoyh7qb"]
+
+[ext_resource type="PackedScene" uid="uid://dloeormcor3d1" path="res://Scenes/Arenas/basic_arena.tscn" id="1_p1et6"]
+[ext_resource type="PackedScene" uid="uid://cntypyj3tblpr" path="res://Scenes/Animations/tutorial.tscn" id="2_8svps"]
+[ext_resource type="PackedScene" uid="uid://dhhpevr07f2sg" path="res://Scenes/Balls/ball_simple.tscn" id="2_a3wyi"]
+[ext_resource type="PackedScene" uid="uid://dsos0xlyffm8j" path="res://Scenes/Discs_Players/player_one.tscn" id="3_8ykxf"]
+[ext_resource type="PackedScene" uid="uid://ghp4cv3io3hx" path="res://Scenes/Discs_Players/player_two.tscn" id="4_fcr7f"]
+[ext_resource type="PackedScene" uid="uid://bvxvupynyo5tg" path="res://Scenes/Football Goals/enemy_goal_zone.tscn" id="5_5dik4"]
+[ext_resource type="PackedScene" uid="uid://n8gop7h1ii3n" path="res://Scenes/Football Goals/my_goal_zone.tscn" id="6_n8hbm"]
+[ext_resource type="PackedScene" uid="uid://b88c8tybxsxgf" path="res://Scenes/Score Panels/result_table_1.tscn" id="7_o60hn"]
+[ext_resource type="PackedScene" uid="uid://c5gthnnlb4mkp" path="res://Scenes/Managers/match_time_manager.tscn" id="8_4iqoj"]
+[ext_resource type="PackedScene" uid="uid://d38le36cl8cw4" path="res://Scenes/Score Panels/timer_presenter_1.tscn" id="8_7jmjy"]
+[ext_resource type="Script" path="res://Scripts/Managers/match_time_manager.gd" id="10_40tgy"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="BasicArena" parent="." instance=ExtResource("1_p1et6")]
+
+[node name="Ball" parent="." instance=ExtResource("2_a3wyi")]
+position = Vector2(775, 264)
+
+[node name="PlayerOne" parent="." instance=ExtResource("3_8ykxf")]
+position = Vector2(365, 171)
+
+[node name="PlayerTwo" parent="." instance=ExtResource("4_fcr7f")]
+position = Vector2(396, -241)
+
+[node name="EnemyGoalZone" parent="." instance=ExtResource("5_5dik4")]
+position = Vector2(690, -419)
+
+[node name="MyGoalZone" parent="." instance=ExtResource("6_n8hbm")]
+position = Vector2(723, 423)
+
+[node name="ResultTable1" parent="." instance=ExtResource("7_o60hn")]
+anchors_preset = 0
+offset_left = 1826.0
+offset_top = 323.0
+offset_right = 1887.0
+offset_bottom = 384.0
+text = "10"
+
+[node name="ResultTable3" parent="." instance=ExtResource("7_o60hn")]
+anchors_preset = 0
+offset_left = 1828.0
+offset_top = 671.0
+offset_right = 1889.0
+offset_bottom = 732.0
+text = "10"
+
+[node name="ResultTable2" parent="." instance=ExtResource("7_o60hn")]
+anchors_preset = 0
+offset_left = 736.0
+offset_top = 727.0
+offset_right = 797.0
+offset_bottom = 788.0
+rotation = -1.5708
+text = "10"
+
+[node name="ResultTable4" parent="." instance=ExtResource("7_o60hn")]
+anchors_preset = 0
+offset_left = 729.0
+offset_top = 382.0
+offset_right = 790.0
+offset_bottom = 443.0
+rotation = -1.5708
+text = "10"
+
+[node name="MatchTimeManager" parent="." instance=ExtResource("8_4iqoj")]
+
+[node name="TimerPresenter1" parent="MatchTimeManager" instance=ExtResource("8_7jmjy")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 1831.0
+offset_top = 429.0
+offset_right = 2023.0
+offset_bottom = 490.0
+text = "10 : 00"
+
+[node name="TimerPresenter2" parent="MatchTimeManager" instance=ExtResource("8_7jmjy")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 724.0
+offset_top = 620.0
+offset_right = 916.0
+offset_bottom = 681.0
+rotation = -1.5708
+script = ExtResource("10_40tgy")
+
+[node name="Tutorial" parent="." instance=ExtResource("2_8svps")]
+position = Vector2(-96, -13)

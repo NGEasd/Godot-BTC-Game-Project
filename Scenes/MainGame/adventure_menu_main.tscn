@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhgi7am42ceq7"]
+
+[ext_resource type="Texture2D" uid="uid://na5e04q2304" path="res://Assets/1726157983148.jpg" id="1_f2pnf"]
+[ext_resource type="PackedScene" uid="uid://dxlchd6ow5uww" path="res://AdventureMode/MenuButtons/play_button.tscn" id="2_wj3ki"]
+[ext_resource type="PackedScene" uid="uid://b8s0l1fibcqet" path="res://AdventureMode/MenuButtons/trophy_button.tscn" id="3_qs3h6"]
+[ext_resource type="PackedScene" uid="uid://cxx6cxwnnrlia" path="res://AdventureMode/MenuButtons/back_to_mainmenu.tscn" id="4_np02f"]
+
+[node name="AdventureMenu" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1211, 539.5)
+scale = Vector2(1.15409, 1.10278)
+texture = ExtResource("1_f2pnf")
+
+[node name="PlayButton" parent="." instance=ExtResource("2_wj3ki")]
+position = Vector2(1195, 583)
+
+[node name="TrophyButton" parent="." instance=ExtResource("3_qs3h6")]
+position = Vector2(1196, 876)
+
+[node name="Back" parent="." instance=ExtResource("4_np02f")]
+position = Vector2(297, 183)

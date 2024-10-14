@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfwcabf3cqsgd"]
+
+[ext_resource type="Texture2D" uid="uid://d24kjmnmskbhm" path="res://Assets/Kapu 2.png" id="1_v6l65"]
+[ext_resource type="Script" path="res://Scripts/GoalZoneEnemy.gd" id="2_4kjks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmf6d"]
+size = Vector2(29.3143, 124.629)
+
+[node name="EnemyGoal" type="Sprite2D"]
+position = Vector2(538.5, 368.5)
+scale = Vector2(1.41026, 1.19872)
+texture = ExtResource("1_v6l65")
+
+[node name="GoalZone" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("2_4kjks")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalZone"]
+position = Vector2(4.27142, -6.13482)
+shape = SubResource("RectangleShape2D_xmf6d")
+
+[connection signal="body_entered" from="GoalZone" to="GoalZone" method="_on_body_entered"]

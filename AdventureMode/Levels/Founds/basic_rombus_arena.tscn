@@ -1,0 +1,113 @@
+[gd_scene load_steps=17 format=3 uid="uid://cqe2roxuieeo1"]
+
+[ext_resource type="PackedScene" uid="uid://cirtlfakk8em1" path="res://Scenes/Arenas/rombus_arena.tscn" id="1_ddkk1"]
+[ext_resource type="PackedScene" uid="uid://b6dpvw8by67bq" path="res://Scenes/Football Goals/enemy_goal_zone_ROMBUS.tscn" id="2_74s2g"]
+[ext_resource type="PackedScene" uid="uid://c6c7b1hytdqhq" path="res://Scenes/Football Goals/player_goal_zone_ROMBUS.tscn" id="3_rxlo0"]
+[ext_resource type="PackedScene" uid="uid://d38le36cl8cw4" path="res://Scenes/Score Panels/timer_presenter_1.tscn" id="4_a3jjt"]
+[ext_resource type="PackedScene" uid="uid://b88c8tybxsxgf" path="res://Scenes/Score Panels/result_table_1.tscn" id="5_l4duv"]
+[ext_resource type="PackedScene" uid="uid://c5gthnnlb4mkp" path="res://Scenes/Managers/match_time_manager.tscn" id="6_qh1bf"]
+[ext_resource type="PackedScene" uid="uid://dhhpevr07f2sg" path="res://Scenes/Balls/ball_simple.tscn" id="7_w1yl5"]
+[ext_resource type="PackedScene" uid="uid://mry0ko87s2np" path="res://Scenes/Discs_Enemy/enemy_disc.tscn" id="8_3em58"]
+[ext_resource type="PackedScene" uid="uid://bqj24wsxm32uc" path="res://Scenes/Managers/original_game_manager.tscn" id="9_xb11l"]
+[ext_resource type="Script" path="res://Scenes/Managers/original_game_manager_level4+.gd" id="10_b2xst"]
+[ext_resource type="PackedScene" uid="uid://dsxgrd0yd6xwc" path="res://Scenes/Animations/goal_animation_enemy.tscn" id="11_4sqdx"]
+[ext_resource type="PackedScene" uid="uid://dypkrl1b5qfmq" path="res://Scenes/Animations/goal_animation.tscn" id="12_wfopq"]
+[ext_resource type="PackedScene" uid="uid://bfdoc8lb4bnnh" path="res://Scenes/match_ended.tscn" id="13_5b3cw"]
+[ext_resource type="Script" path="res://Scenes/match_ended.gd" id="14_xv5ib"]
+[ext_resource type="AudioStream" uid="uid://cbmhtx2dabt0a" path="res://Audio/KickOff.mp3" id="15_8fuxs"]
+[ext_resource type="AudioStream" uid="uid://w6xa3angrj1m" path="res://Audio/MatchEnded.mp3" id="16_bv1vs"]
+
+[node name="BasicRombusArena" type="Node2D"]
+
+[node name="RombusArena" parent="." instance=ExtResource("1_ddkk1")]
+position = Vector2(4, 10)
+
+[node name="EnemyGoalZone" parent="." instance=ExtResource("2_74s2g")]
+position = Vector2(609, -456)
+
+[node name="MyGoalZone" parent="." instance=ExtResource("3_rxlo0")]
+position = Vector2(640, 446)
+
+[node name="TimerPresenter1" parent="." instance=ExtResource("4_a3jjt")]
+offset_left = 1893.0
+offset_top = 421.0
+offset_right = 2085.0
+offset_bottom = 482.0
+
+[node name="TimerPresenter2" parent="." instance=ExtResource("4_a3jjt")]
+offset_left = 582.0
+offset_top = 613.0
+offset_right = 774.0
+offset_bottom = 674.0
+rotation = -1.5708
+text = "02 : 00"
+
+[node name="ResultTableA1" parent="." instance=ExtResource("5_l4duv")]
+offset_left = 576.0
+offset_top = 384.0
+offset_right = 625.0
+offset_bottom = 445.0
+rotation = -1.5708
+text = "1
+"
+
+[node name="ResultTableA2" parent="." instance=ExtResource("5_l4duv")]
+offset_left = 1906.0
+offset_top = 650.0
+offset_right = 1955.0
+offset_bottom = 711.0
+text = "1
+"
+
+[node name="ResultTableB1" parent="." instance=ExtResource("5_l4duv")]
+offset_left = 568.0
+offset_top = 705.0
+offset_right = 617.0
+offset_bottom = 766.0
+rotation = -1.5708
+text = "1
+"
+
+[node name="ResultTableB2" parent="." instance=ExtResource("5_l4duv")]
+offset_left = 1904.0
+offset_top = 335.0
+offset_right = 1966.0
+offset_bottom = 396.0
+text = "1
+"
+
+[node name="MatchTimeManager" parent="." instance=ExtResource("6_qh1bf")]
+offset_left = 1879.0
+offset_top = 357.0
+offset_right = 1879.0
+offset_bottom = 357.0
+
+[node name="SimpleBall" parent="." instance=ExtResource("7_w1yl5")]
+position = Vector2(1226, 519)
+
+[node name="EnemyDisc" parent="." instance=ExtResource("8_3em58")]
+position = Vector2(1229, 106)
+
+[node name="BasicGameManager" parent="." instance=ExtResource("9_xb11l")]
+position = Vector2(-55, 17)
+script = ExtResource("10_b2xst")
+playerScore = 0
+enemyScore = 3
+
+[node name="GoalAnimation" parent="." instance=ExtResource("11_4sqdx")]
+position = Vector2(2477, 1089)
+rotation = 3.14159
+
+[node name="GoalAnimationPlayer" parent="." instance=ExtResource("12_wfopq")]
+position = Vector2(100, 29)
+
+[node name="MatchEnded" parent="." instance=ExtResource("13_5b3cw")]
+z_index = 3
+position = Vector2(1216, 544)
+script = ExtResource("14_xv5ib")
+
+[node name="KickOffSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_8fuxs")
+
+[node name="MatchFinishedSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_bv1vs")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2c7ampe1m4sd"]
+
+[ext_resource type="Texture2D" uid="uid://vjmi1b4g03ac" path="res://Assets/ovális.jpg" id="1_cdo1s"]
+
+[node name="OvalArena" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1198, 543)
+scale = Vector2(1.1875, 1.20738)
+texture = ExtResource("1_cdo1s")
+
+[node name="Borders" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Borders"]
+polygon = PackedVector2Array(690, 249, 837.259, 97.2511, 860, 80, 882, 70, 941, 69, 992, 69, 993, 1, 1306, 0, 1308, 71, 1370, 71, 1425, 89, 1444, 105, 1477, 136, 1550, 205, 1618, 279, 1627, 320, 1641, 341, 1641, 732, 1628, 756, 1619, 784, 1618, 822, 1539, 913, 1470, 981, 1433, 1024, 1316, 1024, 1311, 1096, 996, 1097, 996, 1022, 952, 1022, 865, 1029, 704, 860, 687, 831, 687, 791, 665, 750, 665, 345, 671, 323, 685, 304, 689, 251, 629, 229, 633, 871, 779, 1056, 896, 1108, 1317, 1109, 1526, 1091, 1764, 848, 1754, 221, 1423, -14, 914, -14, 798, 3)

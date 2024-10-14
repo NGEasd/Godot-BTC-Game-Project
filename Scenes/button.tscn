@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://46hm8el2o21p"]
+
+[ext_resource type="Texture2D" uid="uid://8wolshlhu4xb" path="res://Assets/Folytatás.jpg" id="1_h44fg"]
+
+[node name="Button" type="Button"]
+offset_left = 539.0
+offset_top = 316.0
+offset_right = 1020.0
+offset_bottom = 466.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(240, 76)
+scale = Vector2(0.193125, 0.139124)
+texture = ExtResource("1_h44fg")
